@@ -27,6 +27,16 @@ RSpec.describe EmployeeTable, type: :model do
       expect(employee).to eq(false) 
     end
 
+    it 'ensures name length' do
+      employee = EmployeeTable.new(name: "n", department: "department", email: "email@ahauha.com", salary: 25).save
+      expect(employee).to eq(false) 
+    end
+    
+    it 'ensures salary not to be decimal' do
+      employee = EmployeeTable.new(name: "name", department: "department", email: "email@ahauha.com", salary: 25.8).save
+      expect(employee).to eq(false) 
+    end
+    
     it 'should save successfully' do
       employee = EmployeeTable.new(name: "name", department: "department", email: "email@example.com", salary: 25).save
       expect(employee).to eq(true)

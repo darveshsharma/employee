@@ -27,7 +27,7 @@ class EmployeeTablesController < ApplicationController
   # PATCH/PUT /employee_tables/1
   def update
     if @employee_table.update(employee_table_params)
-      render json: @employee_table
+      render json: @employee_table, status: 200
     else
       render json: @employee_table.errors, status: :unprocessable_entity
     end
